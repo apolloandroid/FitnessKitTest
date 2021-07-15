@@ -1,0 +1,152 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-android-extensions'
+}
+
+ext {
+    version_appcompat = "1.3.0"
+    version_constraint_layout = "2.0.4"
+    version_core_ktx = "1.6.0"
+    version_desugaring = "1.1.5"
+    version_fragment_ktx = "1.3.3"
+    version_glide = "4.12.0"
+    version_gson="2.8.6"
+    version_fragment_ktx = "1.3.5"
+    version_hilt_viewmodel = "1.0.0-alpha03"
+    version_hilt_compiler = "1.0.0-beta01"
+    version_jetbrains_annotations = "13.0"
+    version_kotlin_coroutines = "1.4.3"
+    version_legacy_support = "1.0.0"
+    version_lifecycle_extensions = "2.2.0"
+    version_lifecycle_viewmodel = "2.3.1"
+    version_livedata = "2.3.1"
+    version_material = "1.4.0"
+    version_multidex = "2.0.1"
+    version_navigation = "2.3.5"
+    version_okhttp = "4.9.0"
+    version_room = "2.3.0"
+    version_viewmodel = "2.3.0"
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.example.fitnesskittest"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+
+    compileOptions {
+        coreLibraryDesugaringEnabled = true
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    //    Appcompat
+    implementation "androidx.appcompat:appcompat:$version_appcompat"
+
+    //    Constraint layout
+    implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
+
+    //    Core-KTX
+    implementation "androidx.core:core-ktx:$version_core_ktx"
+
+    //    Desugaring
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:$version_desugaring")
+
+    //    Fragment-KTX
+    implementation "androidx.fragment:fragment-ktx:$version_fragment_ktx"
+
+    //    Glide
+    implementation "com.github.bumptech.glide:glide:$version_glide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$version_glide"
+
+    //    Gson
+    implementation "com.google.code.gson:gson:$version_gson"
+
+    //    Hilt
+    implementation "com.google.dagger:hilt-android:$version_hilt"
+    annotationProcessor 'androidx.room:room-compiler:2.3.0'
+    kapt "com.google.dagger:hilt-compiler:$version_hilt"
+
+    //    JetBrains annotation
+    compileOnly("org.jetbrains:annotations:$version_jetbrains_annotations")
+    testCompileOnly("org.jetbrains:annotations:$version_jetbrains_annotations")
+
+    //    Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$version_kotlin"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_kotlin_coroutines"
+
+    //    Legacy support
+    implementation "androidx.legacy:legacy-support-v4:$version_legacy_support"
+
+    //    Lifecycle
+    implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$version_lifecycle_viewmodel"
+
+    //    LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$version_livedata"
+
+    //    Material
+    implementation "com.google.android.material:material:$version_material"
+
+    //    Multidex
+    implementation "androidx.multidex:multidex:$version_multidex"
+
+    //    Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$version_navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$version_navigation"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$version_navigation"
+
+    //    OkHttp
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:$version_okhttp"))
+    implementation "com.squareup.okhttp3:okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
+
+    //    Room
+    implementation "androidx.room:room-runtime:$version_room"
+    kapt "androidx.room:room-compiler:$version_room"
+    implementation "androidx.room:room-ktx:$version_room"
+    testImplementation "androidx.room:room-testing:$version_room"
+
+    //    Test
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}
