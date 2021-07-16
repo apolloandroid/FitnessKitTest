@@ -18,6 +18,6 @@
     <style name="Theme.Splash" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:statusBarColor">@color/transparent</item>
         <item name="android:navigationBarColor">@color/transparent</item>
-        <item name="android:windowBackground">@drawable/ic_fitness_center_black_24px</item>
+        <item name="android:windowBackground">@drawable/background_splash</item>
     </style>
 </resources>
