@@ -5,8 +5,8 @@ import com.example.fitnesskittest.model.entity.Lesson
 import com.example.fitnesskittest.model.mapper.lessons.LessonMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
-
 
 class LessonsInteractorImpl @Inject constructor(
     private val service: LessonsService,
@@ -14,6 +14,6 @@ class LessonsInteractorImpl @Inject constructor(
 ) : LessonsInteractor {
     override suspend fun getLessonsHistory(): Flow<List<Lesson>> {
         val lessons = service.getLessonsHistory().map { mapper.getLessonFromDto(it) }
-        return MutableStateFlow(lessons)
+        return flow { lessons }
     }
 }

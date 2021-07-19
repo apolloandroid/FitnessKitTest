@@ -17,7 +17,7 @@ data class Lesson(
 sealed class LessonType(val imageResourceId: Int) {
     companion object {
         private val TYPE_GROUP = "Group"
-        fun create(lessonType: String): LessonType = when (lessonType) {
+        fun create(lessonType: String?): LessonType = when (lessonType) {
             TYPE_GROUP -> Group()
             else -> Personal()
         }

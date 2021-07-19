@@ -4,5 +4,5 @@ import com.example.fitnesskittest.model.dto.lesson.LessonDto
 
 
 interface LessonsService {
-   suspend fun getLessonsHistory(): List<LessonDto>
+    fun getLessonsHistory(): List<LessonDto?>
 }
