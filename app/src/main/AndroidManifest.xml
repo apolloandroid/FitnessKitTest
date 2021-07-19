@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FitnessKitTest">
         <activity
-            android:name=".view.activity.SplashActivity"
+            android:name=".view.splash.SplashActivity"
             android:hardwareAccelerated="true"
             android:noHistory="true"
             android:screenOrientation="portrait"
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.activity.MainActivity"
+            android:name=".view.main.MainActivity"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.FitnessKitTest" />

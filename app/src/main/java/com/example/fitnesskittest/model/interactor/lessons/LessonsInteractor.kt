@@ -4,5 +4,5 @@ import com.example.fitnesskittest.model.entity.Lesson
 import kotlinx.coroutines.flow.Flow
 
 interface LessonsInteractor {
-    fun getLessonsHistory(): Flow<List<Lesson>>
+    suspend fun getLessonsHistory(): Flow<List<Lesson>>
 }
