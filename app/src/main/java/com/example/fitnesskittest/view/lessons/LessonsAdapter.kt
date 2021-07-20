@@ -6,13 +6,15 @@ import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.fitnesskittest.R
 import com.example.fitnesskittest.databinding.DateItemBinding
 import com.example.fitnesskittest.databinding.LessonItemBinding
 import com.example.fitnesskittest.model.entity.Lesson
 import com.example.fitnesskittest.model.entity.LessonType
 import dagger.hilt.android.qualifiers.ApplicationContext
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import javax.inject.Inject
-
 
 class LessonsAdapter @Inject constructor(
     @ApplicationContext private val context: Context
@@ -21,7 +23,7 @@ class LessonsAdapter @Inject constructor(
     private val LESSON_VIEW_TYPE = 2
 
     private val items: MutableList<Item> = mutableListOf()
-    private var currentDateItemItem: Item.DateItem? = null
+    private var currentDateItem: Item.DateItem? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -50,15 +52,16 @@ class LessonsAdapter @Inject constructor(
         lessons.forEach {
             val dateItem = it.toDateItem()
             val lessonItem = it.toLessonItem()
-            if (currentDateItemItem == null) {
-                currentDateItemItem = dateItem
-                items.add(dateItem)
-            } else {
-                if (currentDateItemItem?.date != dateItem.date) {
-                    currentDateItemItem = dateItem
+            currentDateItem?.let { currentDateItem ->
+                if (currentDateItem.date != dateItem.date) {
+                    this.currentDateItem = dateItem
                     items.add(dateItem)
                 }
+            } ?: run {
+                currentDateItem = dateItem
+                items.add(dateItem)
             }
+
             items.add(lessonItem)
         }
         notifyDataSetChanged()
@@ -87,6 +90,7 @@ class LessonsAdapter @Inject constructor(
 
         fun bind(lessonItem: Item.LessonItem, context: Context) {
             binding.lesson = lessonItem
+            binding.tvLessonPrice.text = context.getString(R.string.price, lessonItem.price)
             val imageResId = ResourcesCompat.getDrawable(
                 context.resources,
                 lessonItem.type.imageResourceId,
@@ -99,21 +103,22 @@ class LessonsAdapter @Inject constructor(
 
     sealed class Item {
         class DateItem(val date: String) : Item()
+
         class LessonItem(
             val name: String?,
             val trainerName: String,
             val type: LessonType,
-            val price: String
+            val price: Int
         ) : Item()
     }
 
-    private fun Lesson.toLessonItem(): Item.LessonItem =
-        Item.LessonItem(name, trainerName, type, price.toString())
+    private fun Lesson.toLessonItem() = Item.LessonItem(name, trainerName, type, price)
 
     private fun Lesson.toDateItem(): Item.DateItem {
-//        val dateFormat = "dd.MM.yyyy"
-//        val dateFormatter = ofPattern(dateFormat).withZone(ZoneId.systemDefault())
-//        val date = dateFormatter.format(Instant.parse(this.date))
-        return Item.DateItem(date)
+        val currentDate = LocalDate.parse(this.date)
+        val targetDateFormat = "dd.MM.yyyy"
+        val formatter = DateTimeFormatter.ofPattern(targetDateFormat)
+        val targetDate = currentDate.format(formatter)
+        return Item.DateItem(targetDate)
     }
 }

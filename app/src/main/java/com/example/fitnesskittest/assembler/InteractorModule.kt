@@ -4,7 +4,10 @@ import com.example.fitnesskittest.model.backend.lessons.LessonsServiceImpl
 import com.example.fitnesskittest.model.backend.visits.VisitsServiceImpl
 import com.example.fitnesskittest.model.interactor.lessons.*
 import com.example.fitnesskittest.model.interactor.visits.*
+import com.example.fitnesskittest.model.mapper.lessons.LessonMapper
 import com.example.fitnesskittest.model.mapper.lessons.LessonMapperImpl
+import com.example.fitnesskittest.model.mapper.visits.VisitMapper
+import com.example.fitnesskittest.model.mapper.visits.VisitMapperImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,12 +22,17 @@ class InteractorModule {
     fun provideLessonsInteractor(
         lessonsService: LessonsServiceImpl,
         lessonMapper: LessonMapperImpl
-    ): LessonsInteractor {
-        return LessonsInteractorImpl(lessonsService, lessonMapper)
-    }
+    ): LessonsInteractor = LessonsInteractorImpl(lessonsService, lessonMapper)
 
     @Provides
-    fun provideVisitsInteractor(visitsServiceImpl: VisitsServiceImpl): VisitsInteractor {
-        return VisitsInteractorImpl(visitsServiceImpl)
-    }
+    fun provideVisitsInteractor(
+        visitsService: VisitsServiceImpl,
+        visitMapper: VisitMapperImpl
+    ): VisitsInteractor = VisitsInteractorImpl(visitsService, visitMapper)
+
+    @Provides
+    fun provideLessonMapper(): LessonMapper = LessonMapperImpl()
+
+    @Provides
+    fun provideVisitMapper(): VisitMapper = VisitMapperImpl()
 }

@@ -5,6 +5,7 @@ import com.example.fitnesskittest.model.entity.Lesson
 import com.example.fitnesskittest.model.entity.LessonType
 import javax.inject.Inject
 
+
 class LessonMapperImpl @Inject constructor() : LessonMapper {
     override fun getLessonFromDto(lessonDto: LessonDto?): Lesson {
         return Lesson(

@@ -1,9 +1,9 @@
-package com.example.fitnesskittest.view.lessons
+package com.example.fitnesskittest.view.visits
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.fitnesskittest.model.entity.Lesson
-import com.example.fitnesskittest.model.interactor.lessons.LessonsInteractor
+import com.example.fitnesskittest.model.entity.Visit
+import com.example.fitnesskittest.model.interactor.visits.VisitsInteractor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,16 +14,16 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class LessonsViewModel @Inject constructor(
-    private val lessonsInteractor: LessonsInteractor
+class VisitsViewModel @Inject constructor(
+    private val visitsInteractor: VisitsInteractor
 ) : ViewModel() {
 
-    private val _lessons = MutableStateFlow<List<Lesson>>(listOf())
-    val lessons = _lessons.asStateFlow()
+    private val _visits = MutableStateFlow<List<Visit>>(listOf())
+    val visits = _visits.asStateFlow()
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            lessonsInteractor.getLessonsHistory().collect { _lessons.value = it }
+            visitsInteractor.getVisitsHistory().collect { _visits.value = it }
         }
     }
 }

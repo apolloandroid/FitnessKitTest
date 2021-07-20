@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import com.example.fitnesskittest.R
 import com.example.fitnesskittest.databinding.FragmentMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
     private lateinit var viewPagerAdapter: ViewPagerAdapter

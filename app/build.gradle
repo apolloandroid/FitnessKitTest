@@ -61,7 +61,7 @@ android {
     }
 
     lintOptions{
-        disable "ResourceType"
+        disable "ResourceType" , "StringFormatMatches"
     }
 
     compileOptions {
