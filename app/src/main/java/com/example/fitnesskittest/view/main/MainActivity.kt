@@ -1,4 +1,4 @@
-package com.example.fitnesskittest.view.activity
+package com.example.fitnesskittest.view.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

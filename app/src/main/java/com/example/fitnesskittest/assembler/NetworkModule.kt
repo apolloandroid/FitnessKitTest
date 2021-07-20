@@ -17,19 +17,16 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
+
 @Module
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
 
     @Provides
-    fun provideLessonsService(retrofit: Retrofit): LessonsService {
-        return LessonsServiceImpl(retrofit)
-    }
+    fun provideLessonsService(retrofit: Retrofit): LessonsService = LessonsServiceImpl(retrofit)
 
     @Provides
-    fun provideVisitsService(retrofit: Retrofit): VisitsService {
-        return VisitsServiceImpl(retrofit)
-    }
+    fun provideVisitsService(retrofit: Retrofit): VisitsService = VisitsServiceImpl(retrofit)
 
     @Provides
     fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient): Retrofit {

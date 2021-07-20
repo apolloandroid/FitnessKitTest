@@ -1,8 +1,9 @@
-package com.example.fitnesskittest.view.activity
+package com.example.fitnesskittest.view.splash
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.fitnesskittest.view.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

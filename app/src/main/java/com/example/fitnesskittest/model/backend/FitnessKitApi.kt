@@ -7,12 +7,14 @@ import retrofit2.http.GET
 
 interface FitnessKitApi {
     companion object {
-        val baseUrl = "https://sample.fitnesskit-admin.ru/accounts/"
+        const val baseUrl = "https://sample.fitnesskit-admin.ru/accounts/"
+        const val getLessonsHistory = "get_client_lesson_history/"
+        const val getVisitsHistory = "get_client_visit_history/"
     }
 
-    @GET("get_client_lesson_history/")
-    fun getLessonsHistory( ): Call<LessonResponse>
+    @GET(getLessonsHistory)
+    fun getLessonsHistory(): Call<LessonResponse>
 
-    @GET("get_client_visit_history/")
+    @GET(getVisitsHistory)
     fun getVisitsHistory(): Call<VisitResponse>
 }
