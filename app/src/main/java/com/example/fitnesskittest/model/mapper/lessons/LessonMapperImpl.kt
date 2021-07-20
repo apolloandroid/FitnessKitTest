@@ -3,6 +3,7 @@ package com.example.fitnesskittest.model.mapper.lessons
 import com.example.fitnesskittest.model.dto.lesson.LessonDto
 import com.example.fitnesskittest.model.entity.Lesson
 import com.example.fitnesskittest.model.entity.LessonType
+import java.util.*
 import javax.inject.Inject
 
 

@@ -2,6 +2,7 @@ package com.example.fitnesskittest.model.mapper.visits
 
 import com.example.fitnesskittest.model.dto.visit.VisitDto
 import com.example.fitnesskittest.model.entity.Visit
+import java.util.*
 import javax.inject.Inject
 
 

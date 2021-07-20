@@ -2,6 +2,7 @@ package com.example.fitnesskittest.model.entity
 
 import com.example.fitnesskittest.R
 
+
 data class Lesson(
     val name: String,
     val trainerName: String,
