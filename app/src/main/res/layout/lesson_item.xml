@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
+
+        <ImageView
+            android:id="@+id/img_group"
+            style="@style/image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_lesson_name"
+            style="@style/text_lesson_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{lesson.name}"
+            app:layout_constraintStart_toEndOf="@+id/img_group"
+            app:layout_constraintTop_toTopOf="@+id/img_group" />
+
+        <TextView
+            android:id="@+id/tv_trainer_name"
+            style="@style/text_lesson_trainer_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{lesson.trainerName}"
+            app:layout_constraintStart_toStartOf="@+id/tv_lesson_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_lesson_name" />
+
+        <TextView
+            android:id="@+id/tv_lesson_price"
+            style="@style/text_lesson_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_lesson_name" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+        <variable
+            name="lesson"
+            type="com.example.fitnesskittest.view.lessons.LessonsAdapter.Item.LessonItem" />
+    </data>
+</layout>

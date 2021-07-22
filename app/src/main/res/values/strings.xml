@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Fitness Kit</string>
+
+    <!-- MainFragment -->
+    <string name="trainings_history">История тренировок</string>
+    <string name="lessons_tab_title">Тренировки</string>
+    <string name="visits_tab_title">Посещения</string>
+    <string name="price">%1$s ₽</string>
 </resources>

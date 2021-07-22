@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="text_lesson_name" >
+        <item name="android:textSize">@dimen/text14sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginStart">@dimen/margin8dp</item>
+        <item name="android:layout_marginEnd">@dimen/margin8dp</item>
+    </style>
+
+    <style name="text_lesson_trainer_name" >
+        <item name="android:textSize">@dimen/text12sp</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+    <style name="date_item" >
+        <item name="android:textSize">@dimen/text12sp</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+    <style name="image">
+        <item name="android:layout_marginStart">@dimen/margin8dp</item>
+        <item name="android:layout_marginTop">@dimen/margin8dp</item>
+        <item name="android:elevation">@dimen/elevation</item>
+    </style>
+
+    <style name="text_visit">
+        <item name="android:textSize">@dimen/text12sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginStart">@dimen/margin8dp</item>
+        <item name="android:layout_marginTop">@dimen/margin8dp</item>
+        <item name="android:layout_marginBottom">@dimen/margin8dp</item>
+    </style>
+
+    <style name="text_visit_date">
+        <item name="android:textSize">@dimen/text14sp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:layout_marginTop">@dimen/margin8dp</item>
+        <item name="android:layout_marginBottom">@dimen/margin8dp</item>
+        <item name="android:layout_marginEnd">@dimen/margin8dp</item>
+    </style>
+
+    <style name="recycler_view">
+        <item name="android:layout_marginTop">@dimen/margin32dp</item>
+        <item name="android:layout_marginStart">@dimen/margin24dp</item>
+        <item name="android:layout_marginEnd">@dimen/margin24dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+</resources>
