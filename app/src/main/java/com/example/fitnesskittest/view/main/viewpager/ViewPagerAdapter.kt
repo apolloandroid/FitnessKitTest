@@ -1,4 +1,4 @@
-package com.example.fitnesskittest.view.main
+package com.example.fitnesskittest.view.main.viewpager
 
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle

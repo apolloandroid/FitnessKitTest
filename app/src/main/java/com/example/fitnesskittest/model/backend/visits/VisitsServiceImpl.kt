@@ -13,9 +13,9 @@ class VisitsServiceImpl @Inject constructor(retrofit: Retrofit) : VisitsService 
     override fun getVisitsHistory(): List<VisitDto> {
         return try {
             val response = api.getVisitsHistory().execute()
-            response.body()?.visits ?: listOf()
+            response.body()?.visits ?: emptyList()
         } catch (e: Exception) {
-            listOf()
+            emptyList()
         }
     }
 }

@@ -10,11 +10,11 @@ import com.example.fitnesskittest.R
 import com.example.fitnesskittest.databinding.DateItemBinding
 import com.example.fitnesskittest.databinding.LessonItemBinding
 import com.example.fitnesskittest.model.entity.Lesson
-import com.example.fitnesskittest.model.entity.LessonType
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import javax.inject.Inject
+
 
 class LessonsAdapter @Inject constructor(
     @ApplicationContext private val context: Context
@@ -48,23 +48,25 @@ class LessonsAdapter @Inject constructor(
 
     override fun getItemCount(): Int = items.size
 
-    fun setLessons(lessons: List<Lesson>) {
-        lessons.forEach {
-            val dateItem = it.toDateItem()
-            val lessonItem = it.toLessonItem()
-            currentDateItem?.let { currentDateItem ->
-                if (currentDateItem.date != dateItem.date) {
-                    this.currentDateItem = dateItem
+    fun setLessons(lessons: List<Lesson>?) {
+        items.clear()
+        lessons?.let {
+            it.forEach { lesson ->
+                val dateItem = lesson.toDateItem()
+                val lessonItem = lesson.toLessonItem()
+                currentDateItem?.let { currentDateItem ->
+                    if (currentDateItem.date != dateItem.date) {
+                        this.currentDateItem = dateItem
+                        items.add(dateItem)
+                    }
+                } ?: run {
+                    currentDateItem = dateItem
                     items.add(dateItem)
                 }
-            } ?: run {
-                currentDateItem = dateItem
-                items.add(dateItem)
+                items.add(lessonItem)
             }
-
-            items.add(lessonItem)
-        }
-        notifyDataSetChanged()
+            notifyDataSetChanged()
+        } ?: return
     }
 
     class DateViewHolder(private val binding: DateItemBinding) :
@@ -91,13 +93,19 @@ class LessonsAdapter @Inject constructor(
         fun bind(lessonItem: Item.LessonItem, context: Context) {
             binding.lesson = lessonItem
             binding.tvLessonPrice.text = context.getString(R.string.price, lessonItem.price)
-            val imageResId = ResourcesCompat.getDrawable(
-                context.resources,
-                lessonItem.type.imageResourceId,
-                null
-            )
+            val imageResId = getImageResId(lessonItem.type, context)
 
             Glide.with(context).load(imageResId).into(binding.imgGroup)
+        }
+
+        private fun getImageResId(lessonType: String, context: Context) = when (lessonType) {
+            Lesson.TYPE_GROUP -> {
+                ResourcesCompat.getDrawable(context.resources, R.drawable.ic_lesson_group, null)
+            }
+
+            else -> {
+                ResourcesCompat.getDrawable(context.resources, R.drawable.ic_lesson_personal, null)
+            }
         }
     }
 
@@ -107,7 +115,7 @@ class LessonsAdapter @Inject constructor(
         class LessonItem(
             val name: String?,
             val trainerName: String,
-            val type: LessonType,
+            val type: String,
             val price: Int
         ) : Item()
     }

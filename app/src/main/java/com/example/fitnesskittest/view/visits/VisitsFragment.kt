@@ -10,10 +10,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitnesskittest.databinding.FragmentVisitsBinding
+import com.example.fitnesskittest.viewmodel.visits.VisitsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -36,10 +36,15 @@ class VisitsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setVisitsList()
         setObservers()
+        binding.lytRefreshVisits.setOnRefreshListener { viewModel.onRefreshVisits() }
     }
 
     private fun setObservers() {
         viewModel.visits.onEach { adapter.setVisits(it) }.launchIn(lifecycleScope)
+
+        viewModel.hideLoader.observe(viewLifecycleOwner, {
+            binding.lytRefreshVisits.isRefreshing = false
+        })
     }
 
     private fun setVisitsList() {

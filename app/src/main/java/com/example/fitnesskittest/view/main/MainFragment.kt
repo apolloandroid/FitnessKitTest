@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.fitnesskittest.R
 import com.example.fitnesskittest.databinding.FragmentMainBinding
+import com.example.fitnesskittest.view.main.viewpager.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 

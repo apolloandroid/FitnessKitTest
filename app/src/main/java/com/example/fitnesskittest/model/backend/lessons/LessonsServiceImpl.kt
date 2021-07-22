@@ -13,9 +13,9 @@ class LessonsServiceImpl @Inject constructor(retrofit: Retrofit) : LessonsServic
     override fun getLessonsHistory(): List<LessonDto?> {
         return try {
             val response = api.getLessonsHistory().execute()
-            response.body()?.lessons ?: listOf()
+            response.body()?.lessons ?: emptyList()
         } catch (e: Exception) {
-            listOf()
+            emptyList()
         }
     }
 }

@@ -5,5 +5,8 @@ import kotlinx.coroutines.flow.Flow
 
 
 interface VisitsInteractor {
-    fun getVisitsHistory(): Flow<List<Visit>>
+
+    fun getVisitsHistoryFromLocal(): Flow<List<Visit>?>
+
+    suspend fun updateVisitsHistory()
 }

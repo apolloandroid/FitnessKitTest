@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.fitnesskittest.databinding.FragmentLessonsBinding
+import com.example.fitnesskittest.viewmodel.lessons.LessonsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class LessonsFragment : Fragment() {
@@ -35,10 +37,15 @@ class LessonsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setLessonsList()
         setObservers()
+        binding.lytRefreshLessons.setOnRefreshListener { viewModel.onRefreshLessons() }
     }
 
     private fun setObservers() {
-        viewModel.lessons.onEach { adapter.setLessons(it) }.launchIn(lifecycleScope)
+        viewModel.lessonsHistory.onEach{ adapter.setLessons(it) }.launchIn(lifecycleScope)
+
+        viewModel.hideLoader.observe(viewLifecycleOwner, {
+            binding.lytRefreshLessons.isRefreshing = false
+        })
     }
 
     private fun setLessonsList() {
