@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -23,8 +22,7 @@
             android:layout_height="wrap_content"
             android:text="@{lesson.name}"
             app:layout_constraintStart_toEndOf="@+id/img_group"
-            app:layout_constraintTop_toTopOf="@+id/img_group"
-            tools:text="Абонемент АКВА 1 пт" />
+            app:layout_constraintTop_toTopOf="@+id/img_group" />
 
         <TextView
             android:id="@+id/tv_trainer_name"
@@ -33,8 +31,7 @@
             android:layout_height="wrap_content"
             android:text="@{lesson.trainerName}"
             app:layout_constraintStart_toStartOf="@+id/tv_lesson_name"
-            app:layout_constraintTop_toBottomOf="@+id/tv_lesson_name"
-            tools:text="Виктория Кристинская" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_lesson_name" />
 
         <TextView
             android:id="@+id/tv_lesson_price"
@@ -42,8 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_lesson_name"
-            tools:text="1640 ₽" />
+            app:layout_constraintTop_toTopOf="@+id/tv_lesson_name" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <data>
